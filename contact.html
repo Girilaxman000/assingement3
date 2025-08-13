@@ -26,21 +26,54 @@
 
         <form  action="#" class="contact_form">
             
-            <input type="text" id="name" name="name" placeholder="Name" required/>
+            <input type="text" id="name" name="name" placeholder="Name" />
 
             
-            <input type="email" id="email" name="email" placeholder="Email" required />
+            <input type="email" id="email" name="email" placeholder="Email"  />
 
             
-            <textarea id="message" name="message"  placeholder="Message" required></textarea>
+            <textarea id="message" name="message"  placeholder="Message" ></textarea>
 
             <button type="submit">Send</button>
         </form>
         <p id="formMessage"></p>
     </main>
+    <script>
+        const form = document.querySelector('.contact_form');
+        const formMessage = document.getElementById('formMessage');
+        
+        form.addEventListener('submit', function(e) {
+            e.preventDefault(); 
+        
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const message = document.getElementById('message');
+        
+            const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+            if(name === '' || email === '' || message === '') {
+                formMessage.textContent = "Please fill out all fields.";
+                formMessage.style.color = 'red';
+                return;
+            }
+        
+            if(!emailPattern.test(email)) {
+                formMessage.textContent = "Please enter a valid email address.";
+                formMessage.style.color = 'red';
+                return;
+            }
+        
+            formMessage.textContent = "Thank you for your response.";
+            formMessage.style.color = 'green';
+        
+            form.reset();
+        });
+        </script>
+        
 
     <footer>
         <p>&copy; 2025 UrbanRoots CSA | Fresh Produce, Local Love</p>
     </footer>
+
 </body>
 </html>
