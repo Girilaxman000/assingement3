@@ -51,7 +51,7 @@ nav a {
 }
 
 nav a.active {
-    border-bottom: 2px solid yellow;
+    border-bottom: 2px solid yellow;  
 }
 
 .hero-image {
